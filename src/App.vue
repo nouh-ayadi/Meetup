@@ -6,7 +6,7 @@
         <v-list-tile-action>
           <v-icon>person</v-icon>
         </v-list-tile-action>
-      <v-list-tile-content> Views Meetups</v-list-tile-content>
+      <v-list-tile-content> Views meetups air line </v-list-tile-content>
       </v-list-tile>
     </v-list>
   </v-navigation-drawer>
