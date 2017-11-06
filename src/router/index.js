@@ -30,6 +30,7 @@ export default new Router({
     {
       path: '/meetups/:id',
       name: 'Meetup',
+      props: true,
       component: Meetup
     },
     {
@@ -46,6 +47,5 @@ export default new Router({
       path: '/Signin',
       name: 'Signin',
       component: Signin
-    }
-  ]
+    }]
 })
