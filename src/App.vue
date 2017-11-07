@@ -15,7 +15,7 @@
   </v-navigation-drawer>
 <v-toolbar dark class = "primary">
   <v-toolbar-title> <v-btn class ="primary">Devmeetup</v-btn></v-toolbar-title>
-  <v-toolbar-side-icon @click.stop="sideNav = !sideNav" class= "hidden-sm-and-up"></v-toolbar-side-icon>
+  <v-toolbar-side-icon @click="sideNav = !sideNav" class= "hidden-sm-and-up"></v-toolbar-side-icon>
     <v-spacer> </v-spacer>
     <v-toolbar-items class="hidden-xs-only">
     <v-btn flat 
@@ -58,11 +58,11 @@ export default {
     return {
       sideNav: false,
       menuItems: [
-        {icon: 'supervisor_account', title: 'Views Meetups'},
-        {icon: 'room', title: 'Organize Meetup'},
-        {icon: 'person', title: 'Profile'},
-        {icon: 'face', title: 'Sign up'},
-        {icon: 'lock-open', title: 'Sign in'}
+        {icon: 'supervisor_account', title: 'Views Meetups', link: '/meetups'},
+        {icon: 'room', title: 'Organize Meetup', link: '/meetups/new'},
+        {icon: 'person', title: 'Profile', link: '/Profile'},
+        {icon: 'face', title: 'Sign up', link: '/Signup'},
+        {icon: 'lock-open', title: 'Sign in', link: '/Signin'}
       ]
     }
   }

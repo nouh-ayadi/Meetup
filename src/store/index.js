@@ -6,8 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     loadedMeetups: [
-      { imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxfwmmfH8xtrnKOZVOzHCNORPhJyolNMEoZ9Dyf_-bKxbRaS_a', id: 'aa121', title: 'New York', date: '2017-07-17' },
-      { imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzWGs3FsToRxhxBELl6ircByi6HP8nJzE2XyyFpkqTr3N5yot4Pw', id: 'aa122', title: 'Los angeles', date: '2017-07-17' }
+      { imageUrl: 'https://images.moviepilot.com/images/c_limit,q_auto:good,w_600/m5xa5ajsxsflc2gbdy6k/shrek-credit-dreamworks-pictures.jpg', id: 'aa121', title: 'New York', date: '2017-07-17' },
+      { imageUrl: 'http://www.nanook-world.com/wp-content/uploads/2011/12/shrek32.jpg', id: 'aa122', title: 'Los angeles', date: '2017-07-17' }
 
     ],
     user: {
@@ -15,8 +15,25 @@ export default new Vuex.Store({
       registeredMeetups: ['aa122']
     }
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    createMeetup(state, payload) {
+      state.loadedMeetups.push(payload)
+    }
+  },
+  actions: {
+    createMeetup({commit}, payload) {
+      const meetup = {
+        title: payload.title,
+        location: payload.location,
+        imageUrl: payload.imageUrl,
+        description: payload.description,
+        date: payload.date,
+        id: 'img1'
+      }
+      // Reach out to firebase and store it
+      commit('createMeetup', meetup)
+    }
+  },
   getters: {
     loadedMeetups(state) {
       return state.loadedMeetups.sort((meetupA, meetupB) => {
