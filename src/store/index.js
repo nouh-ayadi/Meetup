@@ -6,8 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     loadedMeetups: [
-      { imageUrl: 'https://images.moviepilot.com/images/c_limit,q_auto:good,w_600/m5xa5ajsxsflc2gbdy6k/shrek-credit-dreamworks-pictures.jpg', id: 'aa121', title: 'New York', date: '2017-07-17', location: 'New york', description: 'New york city' },
-      { imageUrl: 'http://www.nanook-world.com/wp-content/uploads/2011/12/shrek32.jpg', id: 'aa122', title: 'Los angeles', date: '2017-07-17', location: 'Location', description: 'Los angeles city' }
+      { imageUrl: 'https://images.moviepilot.com/images/c_limit,q_auto:good,w_600/m5xa5ajsxsflc2gbdy6k/shrek-credit-dreamworks-pictures.jpg', id: 'aa121', title: 'New York', date: new Date(), location: 'New york', description: 'New york city' },
+      { imageUrl: 'http://www.nanook-world.com/wp-content/uploads/2011/12/shrek32.jpg', id: 'aa122', title: 'Los angeles', date: new Date(), location: 'Location', description: 'Los angeles city' }
 
     ],
     user: {
