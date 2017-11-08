@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import * as firebase from 'firebase'
 
 Vue.use(Vuex)
 
@@ -10,14 +11,14 @@ export default new Vuex.Store({
       { imageUrl: 'http://www.nanook-world.com/wp-content/uploads/2011/12/shrek32.jpg', id: 'aa122', title: 'Los angeles', date: new Date(), location: 'Location', description: 'Los angeles city' }
 
     ],
-    user: {
-      id: 'aaa111',
-      registeredMeetups: ['aa122']
-    }
+    user: null
   },
   mutations: {
     createMeetup(state, payload) {
       state.loadedMeetups.push(payload)
+    },
+    setUser(state, payload) {
+      state.user = payload
     }
   },
   actions: {
@@ -32,6 +33,40 @@ export default new Vuex.Store({
       }
       // Reach out to firebase and store it
       commit('createMeetup', meetup)
+    },
+    signUserUP({commit}, payload) {
+      firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
+      .then(
+        user => {
+          const newUser = {
+            id: user.uid,
+            registeredMeetups: []
+          }
+          commit('setUser', newUser)
+        }
+      )
+      .catch(
+        error => {
+          console.log(error)
+        }
+      )
+    },
+    signUserIn({commit}, payload) {
+      firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
+      .then(
+          user => {
+            const newUser = {
+              id: user.uid,
+              registeredMeetups: []
+            }
+            commit('setUser', newUser)
+          }
+      )
+      .catch(
+        error => {
+          console.log(error)
+        }
+      )
     }
   },
   getters: {
@@ -50,6 +85,9 @@ export default new Vuex.Store({
           return meetup.id === meetupId
         })
       }
+    },
+    user(state) {
+      return state.user
     }
   }
 })

@@ -5,7 +5,8 @@
             <v-card>
                 <v-card-text>
                     <v-container>
-                        <form> 
+                        <h2> Veuillez vous incrire </h2>
+                        <form @submit.prevent="onSignup"> 
                             <v-layout row> 
                                 <v-flex xs12>
                                     <v-text-field
@@ -75,15 +76,21 @@ export default {
       return this.password !== this.confirmPassword
         ? 'Passwords do not match'
         : ''
+    },
+    user() {
+      return this.$store.getters.user
+    }
+  },
+  watch: {
+    user(value) {
+      if (value !== null && value !== undefined) {
+        this.$router.push('/')
+      }
     }
   },
   methods: {
     onSignup() {
-      console.log({
-        email: this.email,
-        password: this.password,
-        confirmPassword: this.confirmPassword
-      })
+      this.$store.dispatch('signUserUP', {email: this.email, password: this.password})
     }
   }
 }
