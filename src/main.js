@@ -29,6 +29,11 @@ new Vue({
       projectId: 'siteweb-37a0b',
       storageBucket: 'siteweb-37a0b.appspot.com'
     })
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.$store.dispatch('autoSignIn', user)
+      }
+    })
     this.$store.dispatch('loadMeetups')
   }
 })
