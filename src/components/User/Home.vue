@@ -7,12 +7,22 @@
  
                     <v-flex xs12 sm6 class="text-xs-center text-sm-left">
                     <v-btn large router to="/meetup/new" class ="blue--text">Organize Meetups</v-btn> 
-                    </v-flex>  
-
-                    
+                    </v-flex>        
    </v-layout>
 
-   <v-layout row wrap class ="mt-2">
+  <v-layout>
+  <v-flex xs12 class="text-xs-center">
+    <v-progress-circular
+      indeterminate
+      class="primary--text"
+      :width="7"
+      :size="70"
+      v-if="loading">
+    </v-progress-circular>
+  </v-flex>
+</v-layout>
+
+   <v-layout row wrap class ="mt-2" v-if="!loading">
    <v-flex xs12>         
 
     <v-carousel style="cursor: pointer;">
@@ -38,6 +48,14 @@ export default {
   computed: {
     meetups() {
       return this.$store.getters.featuredMeetups
+    },
+    loading() {
+      return this.$store.getters.loading
+    }
+  },
+  methods: {
+    onLoadMeetup(id) {
+      this.$router.push('/meetups/' + id)
     }
   }
 }

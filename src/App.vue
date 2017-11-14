@@ -1,9 +1,9 @@
 <template>
-<v-app>
-  <v-navigation-drawer v-model="sideNav"> 
-    <v-list> 
-      <v-list-tile 
-      v-for="item in menuItems" 
+  <v-app>
+  <v-navigation-drawer v-model="sideNav">
+    <v-list>
+      <v-list-tile
+      v-for="item in menuItems"
       :key="item.title"
       :to="item.link">
         <v-list-tile-action>
@@ -13,13 +13,13 @@
       </v-list-tile>
     </v-list>
   </v-navigation-drawer>
-<v-toolbar dark class = "primary">
-  <v-toolbar-title> <v-btn large router to="/" class ="primary">Devmeetup</v-btn></v-toolbar-title>
+<v-toolbar dark class = "blue">
+  <v-toolbar-title> <v-btn large router to="/" class ="blue">Devmeetup</v-btn></v-toolbar-title>
   <v-toolbar-side-icon @click="sideNav = !sideNav" class= "hidden-sm-and-up"></v-toolbar-side-icon>
     <v-spacer> </v-spacer>
     <v-toolbar-items class="hidden-xs-only">
-    <v-btn flat 
-    v-for ="item in menuItems" 
+    <v-btn flat
+    v-for ="item in menuItems"
     :key ="item.title"
     :to="item.link">
     <v-icon left dark>{{item.icon}}</v-icon>
