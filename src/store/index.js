@@ -37,7 +37,7 @@ export default new Vuex.Store({
   actions: {
     loadMeetups({commit}) {
       commit('setLoading', true)
-      firebase.darabase().ref('meetups').once('value')
+      firebase.database().ref('meetups').once('value')
       .then((data) => {
         const meetups = []
         const obj = data.val()
