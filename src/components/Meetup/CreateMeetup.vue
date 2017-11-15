@@ -31,17 +31,6 @@
                 </v-layout>
                 <v-layout row>
                     <v-flex xs12 sm6 offset-sm3>
-                        <v-text-field
-                        name="imageUrl"
-                        label="Image URL"
-                        id="imageurl"
-                        v-model="imageUrl"
-                        required>
-                        </v-text-field>
-                    </v-flex>
-                </v-layout>
-                    <v-layout row>
-                    <v-flex xs12 sm6 offset-sm3>
                     <img :src="imageUrl" height= "150">  
                     </v-flex>
                 </v-layout>
@@ -101,7 +90,8 @@ export default {
       imageUrl: '',
       description: '',
       date: new Date(),
-      time: new Date()
+      time: new Date(),
+      image: null
     }
   },
   computed: {
@@ -114,7 +104,7 @@ export default {
     submittableDateTime() {
       const date = new Date(this.date)
       if (typeof this.time === 'string') {
-        const hours = this.time.match(/^(\d+)/)[1]
+        let hours = this.time.match(/^(\d+)/)[1]
         const minutes = this.time.match(/:(\d+)/)[1]
         date.setHours(hours)
         date.setMinutes(minutes)
@@ -132,10 +122,13 @@ export default {
       if (!this.formIsValid) {
         return
       }
+      if (!this.image) {
+        return
+      }
       const meetupData = {
         title: this.title,
         location: this.location,
-        imageUrl: this.imageUrl,
+        image: this.image,
         description: this.description,
         date: this.submittableDateTime
       }

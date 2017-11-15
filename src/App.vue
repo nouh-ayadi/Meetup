@@ -30,7 +30,7 @@
   <v-list-tile v-if= "userIsAuthenticated" 
   @click='onLogout'>
   <v-list-tile-action>
-    <v-icon left dark>exit_to_app</v-icon>
+    <v-icon dark>exit_to_app</v-icon>
   </v-list-tile-action>
   <v-list-tile-content>Logout</v-list-tile-content>
   </v-list-tile>
@@ -46,19 +46,6 @@
 </main>
 </v-app>
 </template>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

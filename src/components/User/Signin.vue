@@ -41,9 +41,7 @@
 
                         <v-layout row>
                             <v-flex>
-                            <v-btn type="submit" :disabled="loading" :loading="loading"
-                                    Sign in>
-                                    <span slot="loader" class ="custom-loader">
+                            <v-btn type="submit">
                                     <v-icon light> cached </v-icon>
                                     </span>
                             </v-btn>                                
