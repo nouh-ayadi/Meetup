@@ -1,5 +1,5 @@
 <template>
 <div>
-    <p> The User Page </p> 
+    <v-btn> The User Page </v-btn> 
 </div>  
 </template>
